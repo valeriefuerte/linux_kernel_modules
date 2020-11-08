@@ -8,7 +8,7 @@ static void *void_ptr = NULL;
 static int *int_array_ptr = NULL;
 static struct device *struct_device_ptr = NULL;
 
-int init_mdl(void)
+int init_module(void)
 {
 	ssize_t void_size = -1, int_array_size = -1;
 
@@ -44,7 +44,7 @@ int init_mdl(void)
     return 0;
 }
 
-void cleanup_mdl(void)
+void cleanup_module(void)
 {
 	if( void_ptr != NULL )
 		checker_kfree(void_ptr);
@@ -55,8 +55,5 @@ void cleanup_mdl(void)
 	if( struct_device_ptr != NULL )
 		checker_kfree(struct_device_ptr);
 }
-
-module_init(init_mdl);
-module_exit(cleanup_mdl);
 
 MODULE_LICENSE("GPL");
